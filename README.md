@@ -1,1 +1,1 @@
-# tic-tac-toe
+2/21/23 - I am now beginning the Tic Tac Toe project as a part of The Odin Project's Javascript track. I will write an app that allows two people to play tic tac toe against each other. I will also attempt to implement an AI opponent for one player to play against.

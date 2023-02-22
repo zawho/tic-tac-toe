@@ -12,7 +12,7 @@ const gameBoard = (() => {
             boardRow.style.display = 'flex';
             gameBoardDiv.appendChild(boardRow);
             for (let j = 0; j < columns; j++) {
-                board[j] = i;
+                board[j] = '';
                 const boardCell = document.createElement('div');
                 boardCell.style.width = '30px';
                 boardCell.style.height = '30px';
@@ -32,10 +32,18 @@ const gameBoard = (() => {
 })();
 
 // Player factory function and player variables.
-const playerFactory = (playerName) => ({playerName});
+const playerFactory = (playerName, playerSymbol) => {
+    function takeTurn() {
 
-const playerOne = playerFactory('Player 1');
-const playerTwo = playerFactory('Player 2');
+    }
+    return {
+        playerName,
+        playerSymbol
+    }
+};
+
+const playerOne = playerFactory('Player 1', 'X');
+const playerTwo = playerFactory('Player 2', 'O');
 
 // Game flow module.
 const gameFlow = (() => {

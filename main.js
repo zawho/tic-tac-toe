@@ -17,4 +17,9 @@ const gameBoard = (() => {
     };
 })();
 
-console.log(gameBoard.board);
+// Player factory function.
+const playerFactory = (playerName) => ({playerName});
+
+const playerOne = playerFactory('Player 1');
+const playerTwo = playerFactory('Player 2');
+

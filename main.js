@@ -2,27 +2,17 @@ const gameBoardDiv = document.querySelector('.game-board');
 
 // Game board module.
 const gameBoard = (() => {
-    const rows = 3;
-    const columns = 3;
+    const boardCell = 9;
     const board = [];
     function createGameBoard() {
-        for (let i = 0; i < rows; i++) {
-            board[i] = [];
-            const boardRow = document.createElement('div');
-            boardRow.style.display = 'flex';
-            gameBoardDiv.appendChild(boardRow);
-            for (let j = 0; j < columns; j++) {
-                board[j] = '';
-                const boardCell = document.createElement('div');
-                boardCell.style.width = '30px';
-                boardCell.style.height = '30px';
-                boardCell.style.border = 'solid 1px black';
-                boardCell.style.display = 'flex';
-                boardCell.style.justifyContent = 'center';
-                boardCell.style.alignItems = 'center';
-                boardCell.innerText = board[j];
-                boardRow.appendChild(boardCell);
-            }
+        for (let i = 0; i < boardCell; i++) {
+            const boardCellDiv = document.createElement('div');
+            boardCellDiv.style.border = 'solid 1px black';
+            boardCellDiv.style.display = 'flex';
+            boardCellDiv.style.justifyContent = 'center';
+            boardCellDiv.style.alignItems = 'center';
+            boardCellDiv.innerText = i + 1;
+            gameBoardDiv.appendChild(boardCellDiv);
         };
     };
     createGameBoard();

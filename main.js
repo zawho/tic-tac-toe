@@ -17,9 +17,13 @@ const gameBoard = (() => {
     };
 })();
 
-// Player factory function.
+// Player factory function and player variables.
 const playerFactory = (playerName) => ({playerName});
 
 const playerOne = playerFactory('Player 1');
 const playerTwo = playerFactory('Player 2');
 
+// Game flow module.
+const gameFlow = (() => {
+
+})();

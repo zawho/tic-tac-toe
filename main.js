@@ -11,7 +11,7 @@ const gameBoard = (() => {
             boardCellDiv.style.display = 'flex';
             boardCellDiv.style.justifyContent = 'center';
             boardCellDiv.style.alignItems = 'center';
-            gameBoardDiv.appendChild(boardCellDiv);g
+            gameBoardDiv.appendChild(boardCellDiv);
         };
     };
     createGameBoard();

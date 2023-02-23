@@ -7,6 +7,7 @@ const gameBoard = (() => {
     function createGameBoard() {
         for (let i = 0; i < 9; i++) {
             boardCellDiv = document.createElement('div');
+            boardCellDiv.classList.add('.board-cell');
             boardCellDiv.style.border = 'solid 1px black';
             boardCellDiv.style.display = 'flex';
             boardCellDiv.style.justifyContent = 'center';
@@ -14,12 +15,11 @@ const gameBoard = (() => {
             gameBoardDiv.appendChild(boardCellDiv);
             board.push(boardCellDiv);
         };
-        console.log(board);
     };
     createGameBoard();
     return {
         board,
-        boardCellDiv
+        boardCellDiv,
     };
 })();
 
@@ -27,7 +27,9 @@ const gameBoard = (() => {
 const playerFactory = (playerName, playerSymbol) => {
     function takeTurn() {
         for (let i = 0; i < gameBoard.board.length; i++) {
-            gameBoard.board[i].innerText = 'X';
+            gameBoard.board[i].addEventListener('click', () => {
+                gameBoard.board[i].innerText = playerSymbol;
+            });
         }
     }
     return {

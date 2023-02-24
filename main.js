@@ -1,10 +1,9 @@
-const gameBoardDiv = document.querySelector('.game-board');
-
 // Game board module.
 const gameBoard = (() => {
     const board = [];
     let boardCellDiv;
     function createGameBoard() {
+        const gameBoardDiv = document.querySelector('.game-board');
         for (let i = 0; i < 9; i++) {
             boardCellDiv = document.createElement('div');
             boardCellDiv.classList.add('.board-cell');

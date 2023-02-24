@@ -39,7 +39,6 @@ const playerFactory = (playerName, playerSymbol) => {
 };
 
 const playerOne = playerFactory('Player 1', 'X');
-playerOne.takeTurn();
 const playerTwo = playerFactory('Player 2', 'O');
 
 // Game flow module.
@@ -54,6 +53,15 @@ const gameFlow = (() => {
         }
     }
     chooseFirstPlayer();
+    function playGame() {
+        console.log(firstPlayer.playerName);
+        if (firstPlayer === playerOne) {
+            playerOne.takeTurn();gi
+        } else {
+            playerTwo.takeTurn();
+        }
+    }
+    playGame();
 })();
 
 

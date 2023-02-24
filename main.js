@@ -44,25 +44,24 @@ const playerTwo = playerFactory('Player 2', 'O');
 
 // Game flow module.
 const gameFlow = (() => {
-    let firstPlayer;
-    let nextPlayer;
+    let currentPlayer;
     function chooseFirstPlayer() {
         const randNum = Math.floor(Math.random() * 2);
         if (randNum === 0) {
-            firstPlayer = playerOne;
+            currentPlayer = playerOne;
         } else {
-            firstPlayer = playerTwo;
+            currentPlayer = playerTwo;
         }
     }
     chooseFirstPlayer();
     function playGame() {
-        console.log(firstPlayer.playerName);
-        if (firstPlayer === playerOne) {
+        console.log(currentPlayer.playerName);
+        if (currentPlayer === playerOne) {
             playerOne.takeTurn();
-            nextPlayer = playerTwo;
+            currentPlayer = playerTwo;
         } else {
             playerTwo.takeTurn();
-            nextPlayer = playerOne;
+            currentPlayer = playerOne;
         }
     }
     playGame();

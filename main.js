@@ -44,7 +44,16 @@ const playerTwo = playerFactory('Player 2', 'O');
 
 // Game flow module.
 const gameFlow = (() => {
-
+    let firstPlayer;
+    function chooseFirstPlayer() {
+        const randNum = Math.floor(Math.random() * 2);
+        if (randNum === 0) {
+            firstPlayer = playerOne;
+        } else {
+            firstPlayer = playerTwo;
+        }
+    }
+    chooseFirstPlayer();
 })();
 
 

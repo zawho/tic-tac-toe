@@ -32,6 +32,11 @@ const playerFactory = (playerName, playerSymbol) => {
             gameBoard.board[i].addEventListener('click', turnEvent);
         }
     }
+    function endTurn() {
+        for (let i = 0; i < gameBoard.board.length; i++) {
+            gameBoard.board[i].removeEventListener('click', turnEvent);
+        }
+    }
     return {
         playerName,
         playerSymbol,

@@ -54,16 +54,10 @@ const gameFlow = (() => {
             currentPlayer = playerTwo;
         }
     }
-    chooseFirstPlayer();
     function playGame() {
+        chooseFirstPlayer();
         console.log(currentPlayer.playerName);
-        if (currentPlayer === playerOne) {
-            currentPlayer.takeTurn();
-            currentPlayer = playerTwo;
-        } else {
-            currentPlayer.takeTurn();
-            currentPlayer = playerOne;
-        }
+        currentPlayer.takeTurn();
     }
     return {
         playGame

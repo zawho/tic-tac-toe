@@ -57,7 +57,7 @@ const gameFlow = (() => {
                 } else {
                     playerFactory.currentPlayer = playerOne;
                 }
-                console.log(playerFactory.currentPlayer);
+                console.log(gameBoard.board);
             });
         }
     }

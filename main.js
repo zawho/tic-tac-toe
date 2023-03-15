@@ -1,7 +1,9 @@
 // Game board module.
 const gameBoard = (() => {
+
     const board = [];
     let boardCellDiv;
+
     function createGameBoard() {
         const gameBoardDiv = document.querySelector('.game-board');
         for (let i = 0; i < 9; i++) {
@@ -16,11 +18,14 @@ const gameBoard = (() => {
             board.push(boardCellDiv);
         };
     };
+
     createGameBoard();
+
     return {
         board,
         boardCellDiv,
     };
+
 })();
 
 // Player factory function and player variables.
@@ -32,14 +37,15 @@ const playerFactory = (playerName, playerSymbol) => {
                 gameBoard.board[i].innerText = playerSymbol;
                 gameBoard.board[i] = playerSymbol;
             });
-            
         }
     }
+
     return {
         playerName,
         playerSymbol,
         takeTurn
-    }
+    };
+
 };
 
 const playerOne = playerFactory('Player 1', 'X');
@@ -47,7 +53,9 @@ const playerTwo = playerFactory('Player 2', 'O');
 
 // Game flow module.
 const gameFlow = (() => {
+
     let currentPlayer;
+
     function chooseFirstPlayer() {
         const randNum = Math.floor(Math.random() * 2);
         if (randNum === 0) {
@@ -56,14 +64,17 @@ const gameFlow = (() => {
             currentPlayer = playerTwo;
         }
     }
+
     function playGame() {
         chooseFirstPlayer();
         console.log(currentPlayer.playerName);
         currentPlayer.takeTurn();
     }
+
     return {
         playGame
-    }
+    };
+
 })();
 
 gameFlow.playGame();

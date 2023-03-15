@@ -25,12 +25,14 @@ const gameBoard = (() => {
 
 // Player factory function and player variables.
 const playerFactory = (playerName, playerSymbol) => {
-    function turnEvent() {
-        this.innerText = playerSymbol;
-    }
+
     function takeTurn() {
         for (let i = 0; i < gameBoard.board.length; i++) {
-            gameBoard.board[i].addEventListener('click', turnEvent);
+            gameBoard.board[i].addEventListener('click', () => {
+                gameBoard.board[i].innerText = playerSymbol;
+                gameBoard.board[i] = playerSymbol;
+            });
+            
         }
     }
     return {

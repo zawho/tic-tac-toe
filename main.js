@@ -29,24 +29,7 @@ const gameBoard = (() => {
 })();
 
 // Player factory function and player variables.
-const playerFactory = (playerName, playerSymbol) => {
-
-    function takeTurn() {
-        for (let i = 0; i < gameBoard.board.length; i++) {
-            gameBoard.board[i].addEventListener('click', () => {
-                gameBoard.board[i].innerText = playerSymbol;
-                gameBoard.board[i] = playerSymbol;
-            });
-        }
-    }
-
-    return {
-        playerName,
-        playerSymbol,
-        takeTurn
-    };
-
-};
+const playerFactory = (playerName, playerSymbol) => ({playerName, playerSymbol});
 
 const playerOne = playerFactory('Player 1', 'X');
 const playerTwo = playerFactory('Player 2', 'O');
@@ -55,6 +38,21 @@ const playerTwo = playerFactory('Player 2', 'O');
 const gameFlow = (() => {
 
     let currentPlayer;
+
+    function takeTurn() {
+        for (let i = 0; i < gameBoard.board.length; i++) {
+            gameBoard.board[i].addEventListener('click', () => {
+                gameBoard.board[i].innerText = currentPlayer.playerSymbol;
+                gameBoard.board[i] = currentPlayer.playerSymbol;
+                if (currentPlayer === playerOne) {
+                    currentPlayer = playerTwo;
+                } else {
+                    currentPlayer = playerOne;
+                }
+                console.log(currentPlayer);
+            });
+        }
+    }
 
     function chooseFirstPlayer() {
         const randNum = Math.floor(Math.random() * 2);
@@ -68,10 +66,11 @@ const gameFlow = (() => {
     function playGame() {
         chooseFirstPlayer();
         console.log(currentPlayer.playerName);
-        currentPlayer.takeTurn();
+        takeTurn();
     }
 
     return {
+        takeTurn,
         playGame
     };
 

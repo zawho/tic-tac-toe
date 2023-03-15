@@ -29,7 +29,17 @@ const gameBoard = (() => {
 })();
 
 // Player factory function and player variables.
-const playerFactory = (playerName, playerSymbol) => ({playerName, playerSymbol});
+const playerFactory = (playerName, playerSymbol) => {
+
+    let currentPlayer;
+
+    return {
+        playerName,
+        playerSymbol,
+        currentPlayer
+    }
+    
+};
 
 const playerOne = playerFactory('Player 1', 'X');
 const playerTwo = playerFactory('Player 2', 'O');
@@ -37,19 +47,17 @@ const playerTwo = playerFactory('Player 2', 'O');
 // Game flow module.
 const gameFlow = (() => {
 
-    let currentPlayer;
-
     function takeTurn() {
         for (let i = 0; i < gameBoard.board.length; i++) {
             gameBoard.board[i].addEventListener('click', () => {
-                gameBoard.board[i].innerText = currentPlayer.playerSymbol;
-                gameBoard.board[i] = currentPlayer.playerSymbol;
-                if (currentPlayer === playerOne) {
-                    currentPlayer = playerTwo;
+                gameBoard.board[i].innerText = playerFactory.currentPlayer.playerSymbol;
+                gameBoard.board[i] = playerFactory.currentPlayer.playerSymbol;
+                if (playerFactory.currentPlayer === playerOne) {
+                    playerFactory.currentPlayer = playerTwo;
                 } else {
-                    currentPlayer = playerOne;
+                    playerFactory.currentPlayer = playerOne;
                 }
-                console.log(currentPlayer);
+                console.log(playerFactory.currentPlayer);
             });
         }
     }
@@ -57,15 +65,15 @@ const gameFlow = (() => {
     function chooseFirstPlayer() {
         const randNum = Math.floor(Math.random() * 2);
         if (randNum === 0) {
-            currentPlayer = playerOne;
+            playerFactory.currentPlayer = playerOne;
         } else {
-            currentPlayer = playerTwo;
+            playerFactory.currentPlayer = playerTwo;
         }
     }
 
     function playGame() {
         chooseFirstPlayer();
-        console.log(currentPlayer.playerName);
+        console.log(playerFactory.currentPlayer.playerName);
         takeTurn();
     }
 

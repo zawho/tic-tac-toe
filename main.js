@@ -47,11 +47,34 @@ const playerTwo = playerFactory('Player 2', 'O');
 // Game flow module.
 const gameFlow = (() => {
 
+    const player1Arr = [];
+    const player2Arr = [];
+
+    function getWinner(cellIndex) {
+        let p1String;
+        let p2String;
+        if (playerFactory.currentPlayer === playerOne && player1Arr.length < 3) {
+            player1Arr.push(cellIndex);
+            p1String = player1Arr.toString().replace(/,/g, '')
+            console.log(p1String);
+        } else if (playerFactory.currentPlayer === playerTwo && player2Arr.length < 3) {
+            player2Arr.push(cellIndex);
+            p2String = player2Arr.toString().replace(/,/g, '')
+            console.log(p2String);
+        }
+        if (p1String === '012') {
+            console.log('Player 1 wins!');
+        } else if (p2String === '012') {
+            console.log('Player 2 wins!');
+        }
+    }
+
     function takeTurn() {
         for (let i = 0; i < gameBoard.board.length; i++) {
             gameBoard.board[i].addEventListener('click', () => {
                 gameBoard.board[i].innerText = playerFactory.currentPlayer.playerSymbol;
                 gameBoard.board[i] = playerFactory.currentPlayer.playerSymbol;
+                getWinner(i);
                 if (playerFactory.currentPlayer === playerOne) {
                     playerFactory.currentPlayer = playerTwo;
                 } else {

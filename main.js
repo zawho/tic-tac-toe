@@ -51,20 +51,20 @@ const gameFlow = (() => {
     const player2Arr = [];
 
     function getWinner(cellIndex) {
-        let p1String;
-        let p2String;
-        if (playerFactory.currentPlayer === playerOne && player1Arr.length < 3) {
+        let p1String = '';
+        let p2String = '';
+        if (playerFactory.currentPlayer === playerOne) {
             player1Arr.push(cellIndex);
             p1String = player1Arr.toString().replace(/,/g, '')
             console.log(p1String);
-        } else if (playerFactory.currentPlayer === playerTwo && player2Arr.length < 3) {
+        } else if (playerFactory.currentPlayer === playerTwo) {
             player2Arr.push(cellIndex);
             p2String = player2Arr.toString().replace(/,/g, '')
             console.log(p2String);
         }
-        if (p1String === '012') {
+        if (p1String.match(/0[0-9]*1[0-9]*2/)) {
             console.log('Player 1 wins!');
-        } else if (p2String === '012') {
+        } else if (p2String.match(/0[0-9]?1[0-9]?2/)) {
             console.log('Player 2 wins!');
         }
     }

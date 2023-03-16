@@ -58,6 +58,9 @@ const gameFlow = (() => {
                     playerFactory.currentPlayer = playerOne;
                 }
                 console.log(gameBoard.board);
+                if (!(document.getElementById(`cell-${i}`).innerText === '')) {
+                    document.getElementById(`cell-${i}`).style.pointerEvents = 'none';
+                }
             });
         }
     }

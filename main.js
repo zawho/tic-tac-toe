@@ -51,7 +51,7 @@ const gameFlow = (() => {
         for (let i = 0; i < gameBoard.board.length; i++) {
             gameBoard.board[i].addEventListener('click', () => {
                 gameBoard.board[i].innerText = playerFactory.currentPlayer.playerSymbol;
-                gameBoard.board[i] = i;
+                gameBoard.board[i] = playerFactory.currentPlayer.playerSymbol;
                 if (playerFactory.currentPlayer === playerOne) {
                     playerFactory.currentPlayer = playerTwo;
                 } else {
@@ -60,7 +60,6 @@ const gameFlow = (() => {
                 if (!(document.getElementById(`cell-${i}`).innerText === '')) {
                     document.getElementById(`cell-${i}`).style.pointerEvents = 'none';
                 }
-                console.log(gameBoard.board);
             });
         }
     }

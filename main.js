@@ -49,6 +49,16 @@ const gameFlow = (() => {
 
     const player1Arr = [];
     const player2Arr = [];
+    const winArr = [
+        '012',
+        '345',
+        '678',
+        '036',
+        '147',
+        '258',
+        '048',
+        '246',
+    ];
 
     function getWinner(cellIndex) {
         let p1String = '';
@@ -64,8 +74,6 @@ const gameFlow = (() => {
         }
         if (p1String.match(/0[0-9]*1[0-9]*2/)) {
             console.log('Player 1 wins!');
-        } else if (p2String.match(/0[0-9]?1[0-9]?2/)) {
-            console.log('Player 2 wins!');
         }
     }
 

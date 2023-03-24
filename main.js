@@ -47,8 +47,7 @@ const playerTwo = playerFactory('Player 2', 'O');
 // Game flow module.
 const gameFlow = (() => {
 
-    const player1Arr = [];
-    const player2Arr = [];
+    let testArr = [];
     const winArr = [
         '012',
         '345',
@@ -60,30 +59,25 @@ const gameFlow = (() => {
         '246',
     ];
 
-    function getWinner(cellIndex) {
-        let p1String = '';
-        let p2String = '';
-        if (playerFactory.currentPlayer === playerOne) {
-            player1Arr.push(cellIndex);
-            player1Arr.sort();
-            p1String = player1Arr.toString().replace(/,/g, '')
-            console.log(p1String);
-        } else if (playerFactory.currentPlayer === playerTwo) {
-            player2Arr.push(cellIndex);
-            p2String = player2Arr.toString().replace(/,/g, '')
-            console.log(p2String);
+    function getWinner() {
+        let otherArr = [];
+        for (let i = 0; i < gameBoard.board.length; i++) {
+            testArr.push(Array.from([i, i + 1, i + 2]).toString().replaceAll(',', ''));
+            if (winArr.includes(testArr[i])) {
+                otherArr.push(testArr[i]);
+            }
         }
-        if (p1String.match(/[01236][0-9]*[13457][0-9]*[25678]/)) {
-            console.log('Player 1 wins!');
-        }
+        console.log(otherArr);
     }
+
+    getWinner();
 
     function takeTurn() {
         for (let i = 0; i < gameBoard.board.length; i++) {
             gameBoard.board[i].addEventListener('click', () => {
                 gameBoard.board[i].innerText = playerFactory.currentPlayer.playerSymbol;
                 gameBoard.board[i] = playerFactory.currentPlayer.playerSymbol;
-                getWinner(i);
+                getWinner();
                 if (playerFactory.currentPlayer === playerOne) {
                     playerFactory.currentPlayer = playerTwo;
                 } else {

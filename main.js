@@ -62,13 +62,13 @@ const gameFlow = (() => {
 
     function getWinner() {
         for (let i = 0; i < gameBoard.board.length; i++) {
-            testArr.push(Array.from([i, i + 1, i + 2]).toString().replaceAll(',', ''));
-            testArr.push(Array.from([i, i + 2, i + 4]).toString().replaceAll(',', ''));
-            testArr.push(Array.from([i, i + 3, i + 6]).toString().replaceAll(',', ''));
-            testArr.push(Array.from([i, i + 4, i + 8]).toString().replaceAll(',', ''));
+            testArr.push(Array.from([i, i + 1, i + 2]));
+            testArr.push(Array.from([i, i + 2, i + 4]));
+            testArr.push(Array.from([i, i + 3, i + 6]));
+            testArr.push(Array.from([i, i + 4, i + 8]));
         }
         for (let i = 0; i < testArr.length; i++) {
-            if (winArr.includes(testArr[i])) {
+            if (winArr.includes(testArr[i].toString().replaceAll(',', ''))) {
                 otherArr.push(testArr[i]);
             }
         }

@@ -2,6 +2,7 @@
 const gameBoard = (() => {
 
     const board = [];
+    const startButton = document.querySelector('.start-button');
     let boardCellDiv;
     let gameBoardDiv;
 
@@ -26,6 +27,7 @@ const gameBoard = (() => {
         board,
         boardCellDiv,
         gameBoardDiv,
+        startButton
     };
 
 })();
@@ -33,18 +35,22 @@ const gameBoard = (() => {
 // Player factory function and player variables.
 const playerFactory = (playerName, playerSymbol) => {
 
+    const player1NameInput = document.querySelector('.player-1-name');
+    const player2NameInput = document.querySelector('.player-2-name');
     let currentPlayer;
 
     return {
         playerName,
         playerSymbol,
+        player1NameInput,
+        player2NameInput,
         currentPlayer
     }
     
 };
 
-const playerOne = playerFactory('Player 1', 'X');
-const playerTwo = playerFactory('Player 2', 'O');
+const playerOne = playerFactory();
+const playerTwo = playerFactory();
 
 // Game flow module.
 const gameFlow = (() => {
@@ -86,10 +92,10 @@ const gameFlow = (() => {
                 }
             }
             if (item.every((x) => x === 'X')) {
-                console.log('Player 1 wins!');
+                console.log(`${playerOne.playerName} wins!`);
                 gameBoard.gameBoardDiv.style.pointerEvents = 'none';
             } else if (item.every((x) => x === 'O')) {
-                console.log('Player 2 wins!');
+                console.log(`${playerTwo.playerName} wins!`);
                 gameBoard.gameBoardDiv.style.pointerEvents = 'none';
             }
         })
@@ -131,13 +137,21 @@ const gameFlow = (() => {
         takeTurn();
     }
 
+    function startGame() {
+        playerOne.playerName = playerOne.player1NameInput.value;
+        playerTwo.playerName = playerTwo.player2NameInput.value;
+        playerOne.playerSymbol = 'X';
+        playerTwo.playerSymbol = 'O';
+        playGame();
+    }
+
     return {
         takeTurn,
-        playGame
+        startGame,
     };
 
 })();
 
-gameFlow.playGame();
+gameBoard.startButton.addEventListener('click', gameFlow.startGame);
 
 

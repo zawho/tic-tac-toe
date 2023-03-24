@@ -49,9 +49,9 @@ const playerTwo = playerFactory('Player 2', 'O');
 // Game flow module.
 const gameFlow = (() => {
 
-    const testArr = [];
-    const otherArr = [];
-    const winArr = [
+    const winTestArr1 = [];
+    const winTestArr2 = [];
+    const winCheckArr = [
         '012',
         '345',
         '678',
@@ -62,24 +62,24 @@ const gameFlow = (() => {
         '246',
     ];
 
-    function getWinner() {
+    function getWinNum() {
         for (let i = 0; i < gameBoard.board.length; i++) {
-            testArr.push(Array.from([i, i + 1, i + 2]));
-            testArr.push(Array.from([i, i + 2, i + 4]));
-            testArr.push(Array.from([i, i + 3, i + 6]));
-            testArr.push(Array.from([i, i + 4, i + 8]));
+            winTestArr1.push(Array.from([i, i + 1, i + 2]));
+            winTestArr1.push(Array.from([i, i + 2, i + 4]));
+            winTestArr1.push(Array.from([i, i + 3, i + 6]));
+            winTestArr1.push(Array.from([i, i + 4, i + 8]));
         }
-        for (let i = 0; i < testArr.length; i++) {
-            if (winArr.includes(testArr[i].toString().replaceAll(',', ''))) {
-                otherArr.push(testArr[i]);
+        for (let i = 0; i < winTestArr1.length; i++) {
+            if (winCheckArr.includes(winTestArr1[i].toString().replaceAll(',', ''))) {
+                winTestArr2.push(winTestArr1[i]);
             }
         }
     }
 
-    getWinner();
+    getWinNum();
 
-    function testFunc(cellIndex) {
-        otherArr.forEach((item) => {
+    function getWinner(cellIndex) {
+        winTestArr2.forEach((item) => {
             for (let i = 0; i < item.length; i++) {
                 if (cellIndex === item[i]) {
                     item[i] = gameBoard.board[cellIndex];
@@ -95,14 +95,12 @@ const gameFlow = (() => {
         })
     }
 
-    testFunc();
-
     function takeTurn() {
         for (let i = 0; i < gameBoard.board.length; i++) {
             gameBoard.board[i].addEventListener('click', () => {
                 gameBoard.board[i].innerText = playerFactory.currentPlayer.playerSymbol;
                 gameBoard.board[i] = playerFactory.currentPlayer.playerSymbol;
-                testFunc(i);
+                getWinner(i);
                 if (playerFactory.currentPlayer === playerOne) {
                     playerFactory.currentPlayer = playerTwo;
                 } else {

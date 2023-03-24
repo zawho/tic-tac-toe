@@ -37,6 +37,8 @@ const playerFactory = (playerName, playerSymbol) => {
 
     const player1NameInput = document.querySelector('.player-1-name');
     const player2NameInput = document.querySelector('.player-2-name');
+    const player1NameLabel = document.querySelector('.player-1-label');
+    const player2NameLabel = document.querySelector('.player-2-label');
     let currentPlayer;
 
     return {
@@ -44,6 +46,8 @@ const playerFactory = (playerName, playerSymbol) => {
         playerSymbol,
         player1NameInput,
         player2NameInput,
+        player1NameLabel,
+        player2NameLabel,
         currentPlayer
     }
     
@@ -143,6 +147,11 @@ const gameFlow = (() => {
         playerOne.playerSymbol = 'X';
         playerTwo.playerSymbol = 'O';
         playGame();
+        playerOne.player1NameLabel.style.display = 'none';
+        playerTwo.player2NameLabel.style.display = 'none';
+        playerOne.player1NameInput.style.display = 'none';
+        playerTwo.player2NameInput.style.display = 'none';
+        gameBoard.startButton.style.display = 'none';
     }
 
     return {

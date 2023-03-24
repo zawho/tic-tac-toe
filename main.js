@@ -47,7 +47,8 @@ const playerTwo = playerFactory('Player 2', 'O');
 // Game flow module.
 const gameFlow = (() => {
 
-    let testArr = [];
+    const testArr = [];
+    const otherArr = [];
     const winArr = [
         '012',
         '345',
@@ -60,9 +61,13 @@ const gameFlow = (() => {
     ];
 
     function getWinner() {
-        let otherArr = [];
         for (let i = 0; i < gameBoard.board.length; i++) {
             testArr.push(Array.from([i, i + 1, i + 2]).toString().replaceAll(',', ''));
+            testArr.push(Array.from([i, i + 2, i + 4]).toString().replaceAll(',', ''));
+            testArr.push(Array.from([i, i + 3, i + 6]).toString().replaceAll(',', ''));
+            testArr.push(Array.from([i, i + 4, i + 8]).toString().replaceAll(',', ''));
+        }
+        for (let i = 0; i < testArr.length; i++) {
             if (winArr.includes(testArr[i])) {
                 otherArr.push(testArr[i]);
             }

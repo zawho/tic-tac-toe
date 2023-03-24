@@ -82,7 +82,7 @@ const gameFlow = (() => {
         winTestArr2.forEach((item) => {
             for (let i = 0; i < item.length; i++) {
                 if (cellIndex === item[i]) {
-                    item[i] = gameBoard.board[cellIndex];
+                    item[i] = gameBoard.board[cellIndex]; // eslint-disable-line no-param-reassign
                 }
             }
             if (item.every((x) => x === 'X')) {

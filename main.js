@@ -109,6 +109,9 @@ const gameFlow = (() => {
                 if (!(document.getElementById(`cell-${i}`).innerText === '')) {
                     document.getElementById(`cell-${i}`).style.pointerEvents = 'none';
                 }
+                if (gameBoard.board.every((y) => y === 'X' || y === 'O') && !(gameBoard.gameBoardDiv.style.pointerEvents === 'none')) {
+                    console.log('Tie!');
+                }
             });
         }
     }

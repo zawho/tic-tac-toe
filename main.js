@@ -3,9 +3,10 @@ const gameBoard = (() => {
 
     const board = [];
     let boardCellDiv;
+    let gameBoardDiv;
 
     function createGameBoard() {
-        const gameBoardDiv = document.querySelector('.game-board');
+        gameBoardDiv = document.querySelector('.game-board');
         for (let i = 0; i < 9; i++) {
             boardCellDiv = document.createElement('div');
             boardCellDiv.classList.add('.board-cell');
@@ -24,6 +25,7 @@ const gameBoard = (() => {
     return {
         board,
         boardCellDiv,
+        gameBoardDiv,
     };
 
 })();
@@ -72,17 +74,35 @@ const gameFlow = (() => {
                 otherArr.push(testArr[i]);
             }
         }
-        console.log(otherArr);
     }
 
     getWinner();
+
+    function testFunc(cellIndex) {
+        otherArr.forEach((item) => {
+            for (let i = 0; i < item.length; i++) {
+                if (cellIndex === item[i]) {
+                    item[i] = gameBoard.board[cellIndex];
+                }
+            }
+            if (item.every((x) => x === 'X')) {
+                console.log('Player 1 wins!');
+                gameBoard.gameBoardDiv.style.pointerEvents = 'none';
+            } else if (item.every((x) => x === 'O')) {
+                console.log('Player 2 wins!');
+                gameBoard.gameBoardDiv.style.pointerEvents = 'none';
+            }
+        })
+    }
+
+    testFunc();
 
     function takeTurn() {
         for (let i = 0; i < gameBoard.board.length; i++) {
             gameBoard.board[i].addEventListener('click', () => {
                 gameBoard.board[i].innerText = playerFactory.currentPlayer.playerSymbol;
                 gameBoard.board[i] = playerFactory.currentPlayer.playerSymbol;
-                getWinner();
+                testFunc(i);
                 if (playerFactory.currentPlayer === playerOne) {
                     playerFactory.currentPlayer = playerTwo;
                 } else {

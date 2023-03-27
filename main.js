@@ -59,6 +59,7 @@ const playerTwo = playerFactory();
 // Game flow module.
 const gameFlow = (() => {
 
+    const gameMsgDiv = document.querySelector('.game-msg');
     const alertMsgDiv = document.querySelector('.alert-msg');
     const playerOneXButton = document.getElementById('player-1-x');
     const playerOneOButton = document.getElementById('player-1-o');
@@ -123,8 +124,10 @@ const gameFlow = (() => {
                 getWinner(i);
                 if (playerFactory.currentPlayer === playerOne) {
                     playerFactory.currentPlayer = playerTwo;
+                    gameMsgDiv.innerText = `${playerTwo.playerName}'s turn!`;
                 } else {
                     playerFactory.currentPlayer = playerOne;
+                    gameMsgDiv.innerText = `${playerOne.playerName}'s turn!`;
                 }
                 if (!(document.getElementById(`cell-${i}`).innerText === '')) {
                     document.getElementById(`cell-${i}`).style.pointerEvents = 'none';
@@ -140,8 +143,10 @@ const gameFlow = (() => {
         const randNum = Math.floor(Math.random() * 2);
         if (randNum === 0) {
             playerFactory.currentPlayer = playerOne;
+            gameMsgDiv.innerText = `${playerOne.playerName}'s turn!`;
         } else {
             playerFactory.currentPlayer = playerTwo;
+            gameMsgDiv.innerText = `${playerTwo.playerName}'s turn!`;
         }
     }
 
@@ -160,6 +165,7 @@ const gameFlow = (() => {
         P2OLabel.style.display = 'none';
         gameBoard.startButton.style.display = 'none';
         alertMsgDiv.style.display = 'none';
+        gameMsgDiv.style.display = 'block';
         chooseFirstPlayer();
         console.log(playerFactory.currentPlayer.playerName);
         takeTurn();

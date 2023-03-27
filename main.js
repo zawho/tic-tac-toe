@@ -142,8 +142,16 @@ const gameFlow = (() => {
     }
 
     function startGame() {
-        playerOne.playerName = playerOne.player1NameInput.value;
-        playerTwo.playerName = playerTwo.player2NameInput.value;
+        if (playerOne.player1NameInput.value === '') {
+            playerOne.playerName = 'Player 1';
+        } else {
+            playerOne.playerName = playerOne.player1NameInput.value;
+        }
+        if (playerTwo.player2NameInput.value === '') {
+            playerTwo.playerName = 'Player 2';
+        } else {
+            playerTwo.playerName = playerTwo.player2NameInput.value;
+        }
         playerOne.playerSymbol = 'X';
         playerTwo.playerSymbol = 'O';
         playGame();

@@ -109,12 +109,12 @@ const gameFlow = (() => {
                     item[i] = gameBoard.board[cellIndex]; // eslint-disable-line no-param-reassign
                 }
             }
-            if (item.every((x) => x === 'X')) {
+            if (item.every((x) => x === playerOne.playerSymbol)) {
                 gameMsgDiv.style.display = 'none';
                 winMsgDiv.style.display = 'block';
                 winMsgDiv.innerText = `${playerOne.playerName} wins!`;
                 gameBoard.gameBoardDiv.style.pointerEvents = 'none';
-            } else if (item.every((x) => x === 'O')) {
+            } else if (item.every((x) => x === playerTwo.playerSymbol)) {
                 gameMsgDiv.style.display = 'none';
                 winMsgDiv.style.display = 'block';
                 winMsgDiv.innerText = `${playerTwo.playerName} wins!`;

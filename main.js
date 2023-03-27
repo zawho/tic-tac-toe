@@ -185,7 +185,7 @@ const gameFlow = (() => {
             playerTwo.playerSymbol = 'X';
             playGame();
         } else {
-            alertMsgDiv.innerText = 'No!';
+            alertMsgDiv.innerText = 'Each player must select their own symbol!';
         }
     }
 

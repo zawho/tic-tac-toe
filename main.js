@@ -3,6 +3,7 @@ const gameBoard = (() => {
 
     const board = [];
     const startButton = document.querySelector('.start-button');
+    const resetButton = document.querySelector('.reset-button');
     let boardCellDiv;
     let gameBoardDiv;
 
@@ -27,7 +28,8 @@ const gameBoard = (() => {
         board,
         boardCellDiv,
         gameBoardDiv,
-        startButton
+        startButton,
+        resetButton
     };
 
 })();
@@ -171,6 +173,7 @@ const gameFlow = (() => {
         gameBoard.startButton.style.display = 'none';
         alertMsgDiv.style.display = 'none';
         gameMsgDiv.style.display = 'block';
+        gameBoard.resetButton.style.display = 'block';
         chooseFirstPlayer();
         takeTurn();
     }

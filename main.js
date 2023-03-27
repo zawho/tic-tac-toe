@@ -60,6 +60,7 @@ const playerTwo = playerFactory();
 const gameFlow = (() => {
 
     const gameMsgDiv = document.querySelector('.game-msg');
+    const winMsgDiv = document.querySelector('.win-msg');
     const alertMsgDiv = document.querySelector('.alert-msg');
     const playerOneXButton = document.getElementById('player-1-x');
     const playerOneOButton = document.getElementById('player-1-o');
@@ -107,10 +108,14 @@ const gameFlow = (() => {
                 }
             }
             if (item.every((x) => x === 'X')) {
-                console.log(`${playerOne.playerName} wins!`);
+                gameMsgDiv.style.display = 'none';
+                winMsgDiv.style.display = 'block';
+                winMsgDiv.innerText = `${playerOne.playerName} wins!`;
                 gameBoard.gameBoardDiv.style.pointerEvents = 'none';
             } else if (item.every((x) => x === 'O')) {
-                console.log(`${playerTwo.playerName} wins!`);
+                gameMsgDiv.style.display = 'none';
+                winMsgDiv.style.display = 'block';
+                winMsgDiv.innerText = `${playerTwo.playerName} wins!`;
                 gameBoard.gameBoardDiv.style.pointerEvents = 'none';
             }
         })
@@ -133,7 +138,7 @@ const gameFlow = (() => {
                     document.getElementById(`cell-${i}`).style.pointerEvents = 'none';
                 }
                 if (gameBoard.board.every((y) => y === 'X' || y === 'O') && !(gameBoard.gameBoardDiv.style.pointerEvents === 'none')) {
-                    console.log('Tie!');
+                    gameMsgDiv.innerText = 'Tie!';
                 }
             });
         }

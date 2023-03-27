@@ -6,6 +6,6 @@
     height: 200px;
 }
 
-.game-msg {
+.game-msg, .win-msg {
     display: none;
 }

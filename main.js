@@ -59,6 +59,16 @@ const playerTwo = playerFactory();
 // Game flow module.
 const gameFlow = (() => {
 
+    const alertMsgDiv = document.querySelector('.alert-msg');
+    const playerOneXButton = document.getElementById('player-1-x');
+    const playerOneOButton = document.getElementById('player-1-o');
+    const playerTwoXButton = document.getElementById('player-2-x');
+    const playerTwoOButton = document.getElementById('player-2-o');
+    const P1XLabel = document.getElementById('1-x-label');
+    const P1OLabel = document.getElementById('1-o-label');
+    const P2XLabel = document.getElementById('2-x-label');
+    const P2OLabel = document.getElementById('2-o-label');
+
     const winTestArr1 = [];
     const winTestArr2 = [];
     const winCheckArr = [
@@ -136,6 +146,20 @@ const gameFlow = (() => {
     }
 
     function playGame() {
+        playerOne.player1NameLabel.style.display = 'none';
+        playerTwo.player2NameLabel.style.display = 'none';
+        playerOne.player1NameInput.style.display = 'none';
+        playerTwo.player2NameInput.style.display = 'none';
+        playerOneXButton.style.display = 'none';
+        playerOneOButton.style.display = 'none';
+        playerTwoXButton.style.display = 'none';
+        playerTwoOButton.style.display = 'none';
+        P1XLabel.style.display = 'none';
+        P1OLabel.style.display = 'none';
+        P2XLabel.style.display = 'none';
+        P2OLabel.style.display = 'none';
+        gameBoard.startButton.style.display = 'none';
+        alertMsgDiv.style.display = 'none';
         chooseFirstPlayer();
         console.log(playerFactory.currentPlayer.playerName);
         takeTurn();
@@ -152,14 +176,17 @@ const gameFlow = (() => {
         } else {
             playerTwo.playerName = playerTwo.player2NameInput.value;
         }
-        playerOne.playerSymbol = 'X';
-        playerTwo.playerSymbol = 'O';
-        playGame();
-        playerOne.player1NameLabel.style.display = 'none';
-        playerTwo.player2NameLabel.style.display = 'none';
-        playerOne.player1NameInput.style.display = 'none';
-        playerTwo.player2NameInput.style.display = 'none';
-        gameBoard.startButton.style.display = 'none';
+        if (playerOneXButton.checked && playerTwoOButton.checked) {
+            playerOne.playerSymbol = 'X';
+            playerTwo.playerSymbol = 'O';
+            playGame();
+        } else if (playerOneOButton.checked && playerTwoXButton.checked) {
+            playerOne.playerSymbol = 'O';
+            playerTwo.playerSymbol = 'X';
+            playGame();
+        } else {
+            alertMsgDiv.innerText = 'No!';
+        }
     }
 
     return {

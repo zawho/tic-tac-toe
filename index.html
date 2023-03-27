@@ -11,17 +11,18 @@
 <body>
     <div class="game-board"></div>
     <label for="player-1" class="player-1-label">Player 1:</label><br>
-    <input type="text" name="player-1" class="player-1-name" required>
-    <input type="radio" name="player-1-symbol" value="X">
-    <label for="X">X</label>
-    <input type="radio" name="player-1-symbol" value="O">
-    <label for="O">O</label><br>
+    <input type="text" name="player-1" class="player-1-name">
+    <input type="radio" name="player-1-symbol" id="player-1-x" value="X">
+    <label for="X" id="1-x-label">X</label>
+    <input type="radio" name="player-1-symbol" id="player-1-o" value="O">
+    <label for="O" id="1-o-label">O</label><br>
     <label for="player-2" class="player-2-label">Player 2:</label><br>
-    <input type="text" name="player-2" class="player-2-name" required>
-    <input type="radio" name="player-2-symbol" value="X">
-    <label for="X">X</label>
-    <input type="radio" name="player-2-symbol" value="O">
-    <label for="O">O</label><br>
-    <button type="button" class="start-button">Start!</button>
+    <input type="text" name="player-2" class="player-2-name">
+    <input type="radio" name="player-2-symbol" id="player-2-x" value="X">
+    <label for="X" id="2-x-label">X</label>
+    <input type="radio" name="player-2-symbol" id="player-2-o" value="O">
+    <label for="O" id="2-o-label">O</label><br>
+    <button type="button" class="start-button">Start!</button><br>
+    <div class="alert-msg"></div>
 </body>
 </html>

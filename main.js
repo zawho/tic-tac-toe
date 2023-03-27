@@ -202,13 +202,19 @@ const gameFlow = (() => {
         }
     }
 
+    function resetGame() {
+        document.location.reload();
+    }
+
     return {
         takeTurn,
         startGame,
+        resetGame
     };
 
 })();
 
 gameBoard.startButton.addEventListener('click', gameFlow.startGame);
+gameBoard.resetButton.addEventListener('click', gameFlow.resetGame);
 
 

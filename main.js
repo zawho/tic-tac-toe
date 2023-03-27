@@ -172,7 +172,6 @@ const gameFlow = (() => {
         alertMsgDiv.style.display = 'none';
         gameMsgDiv.style.display = 'block';
         chooseFirstPlayer();
-        console.log(playerFactory.currentPlayer.playerName);
         takeTurn();
     }
 

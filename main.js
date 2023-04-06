@@ -58,14 +58,6 @@ const playerFactory = (playerName, playerSymbol) => {
 const playerOne = playerFactory();
 const playerTwo = playerFactory();
 
-// AI module.
-const computerPlayer = (() => {
-
-    const aiButton = document.querySelector('.ai-button');
-
-    
-});
-
 // Game flow module.
 const gameFlow = (() => {
 

@@ -3,6 +3,12 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
+    background-color: rgb(242, 190, 255);
+    font-family: 'Archivo Black', sans-serif;
+}
+
+button {
+    font-family: 'Archivo Black', sans-serif;
 }
 
 .game-container {
@@ -16,10 +22,15 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
 }
 
 .game-msg, .win-msg, .reset-button {
     display: none;
+}
+
+.alert-msg {
+    font-size: 0.8rem;
 }

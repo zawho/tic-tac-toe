@@ -9,11 +9,11 @@ const gameBoard = (() => {
 
     function createGameBoard() {
         gameBoardDiv = document.querySelector('.game-board');
+        gameBoardDiv.style.pointerEvents = 'none';
         for (let i = 0; i < 9; i++) {
             boardCellDiv = document.createElement('div');
-            boardCellDiv.classList.add('.board-cell');
+            boardCellDiv.classList.add('board-cell');
             boardCellDiv.setAttribute('id', `cell-${i}`);
-            boardCellDiv.style.border = 'solid 0.5px black';
             boardCellDiv.style.borderRadius = '10px';
             boardCellDiv.style.display = 'flex';
             boardCellDiv.style.justifyContent = 'center';
@@ -193,10 +193,12 @@ const gameFlow = (() => {
         if (playerOneXButton.checked && playerTwoOButton.checked) {
             playerOne.playerSymbol = 'X';
             playerTwo.playerSymbol = 'O';
+            gameBoard.gameBoardDiv.style.pointerEvents = 'auto';
             playGame();
         } else if (playerOneOButton.checked && playerTwoXButton.checked) {
             playerOne.playerSymbol = 'O';
             playerTwo.playerSymbol = 'X';
+            gameBoard.gameBoardDiv.style.pointerEvents = 'auto';
             playGame();
         } else {
             alertMsgDiv.innerText = 'Each player must select their own symbol!';

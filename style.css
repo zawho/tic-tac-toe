@@ -22,9 +22,18 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px;
     width: 300px;
     height: 300px;
     margin-bottom: 20px;
+}
+
+.board-cell {
+    background-color: rgb(246, 225, 251);;
+}
+
+.board-cell:hover {
+    background-color: rgb(131, 78, 145);
 }
 
 .game-ui {

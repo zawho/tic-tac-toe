@@ -33,14 +33,29 @@ button {
     height: 145px;
 }
 
-input[type=text] {
+input[type="text"] {
     border: none;
     border-radius: 5px;
     background-color: rgb(246, 225, 251);
 }
 
-input[type=text]:focus {
+input[type="text"]:focus {
     outline: solid 2px rgb(131, 78, 145);
+}
+
+input[type="radio"] {
+    appearance: none;
+    font: inherit;
+    background-color: rgb(246, 225, 251);
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+}
+
+input[type="radio"]:checked {
+    background-color: rgb(131, 78, 145);
+    outline: 2px solid rgb(246, 225, 251);
 }
 
 .player-1-name {

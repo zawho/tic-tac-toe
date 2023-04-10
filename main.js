@@ -13,7 +13,7 @@ const gameBoard = (() => {
             boardCellDiv = document.createElement('div');
             boardCellDiv.classList.add('.board-cell');
             boardCellDiv.setAttribute('id', `cell-${i}`);
-            boardCellDiv.style.border = 'solid 1px black';
+            boardCellDiv.style.border = 'solid 0.5px black';
             boardCellDiv.style.display = 'flex';
             boardCellDiv.style.justifyContent = 'center';
             boardCellDiv.style.alignItems = 'center';

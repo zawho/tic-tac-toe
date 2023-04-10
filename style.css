@@ -33,6 +33,16 @@ button {
     height: 145px;
 }
 
+input[type=text] {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(246, 225, 251);
+}
+
+input[type=text]:focus {
+    outline: solid 2px rgb(131, 78, 145);
+}
+
 .player-1-name {
     margin-bottom: 10px;
 }
